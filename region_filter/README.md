@@ -114,7 +114,7 @@ Only the two methods that need to be changed are shown.
         slider.addChangeListener(changeEvent -> filterUpdated()); // reapply the filter whenever the user moves the slider 
         panel.add(slider);  // add the slider to the tool dialog
     }
-// =======================================   Filter   ===============================================
+// =======================================   FILTER   ===============================================
 
     @Override
     public boolean shouldVisualizeRegion(Region region) {

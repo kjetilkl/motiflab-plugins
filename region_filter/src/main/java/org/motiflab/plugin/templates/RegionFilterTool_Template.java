@@ -314,13 +314,11 @@ public abstract class RegionFilterTool_Template implements Plugin, RegionVisuali
                 if (model.getIndexOf(selected)>=0) dialog.tracksCombobox.setSelectedItem(selected);
                 else dialog.tracksCombobox.setSelectedIndex(0);
             }
-            engine.logMessage("updateRegionDatasetSelection");
         }
     }
 
     @Override
     public void dataAdded(Data data) {
-        engine.logMessage("Data added: "+data);
         if (data instanceof RegionDataset && hasSingleTarget()) {
            updateRegionDatasetSelection();
         }

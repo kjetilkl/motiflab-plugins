@@ -95,7 +95,8 @@ The example below will draw an image (defined elsewhere) covering the full area 
 The [parent class of the template](src/main/java/org/motiflab/plugin/templates/RegionFilterTool_Template.java) implements a DataListener interface to monitor changes to the target dataset and reapply the filter when necessary. It also detects if new Region Datasets are added or existing datasets are deleted and updates the options availbale in the target dataset drop-down menu accordingly. If the plugin creator needs to, they can [override these callback methods](src/main/java/org/motiflab/plugin/templates/RegionFilterTool_Template.java#L320-L351) to respond to such events. Just remember to include a call to `super()` at the beginning of each overrided method.
 
 ### Loading images
-Lorem ipsum
+Images placed in the [images/](images) directory can easily be loaded with a call to the `getImage(<filename>)` method which returns a java.awt.Image. 
+Note, however, that this method can only be used after the plugin has been initialized by MotifLab, which in effect means that it must be called from within one of the template's methods, such as [setupDialog](src/main/java/org/motiflab/plugin/MyPlugin.java#L27-L29).
 
 
 # Building the plugin

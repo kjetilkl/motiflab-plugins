@@ -79,11 +79,13 @@ The [filter section](src/main/java/org/motiflab/plugin/MyPlugin.java#L39-L72) of
 The last callback method, [drawOverlay](src/main/java/org/motiflab/plugin/MyPlugin.java#L68-L71), does not return a value but can be used to draw additional graphics on top of the region after it has been drawn in the regular way. The method is provided with a Graphics2D object which offers various painting tools and a Rectangle defining the area occupied by the Region on screen. The other input parameters are references to the VisualizationSettings object (a giant lookup-table containing all visualization-related settings in MotifLab) and the DataTrackVisualizer object that is responsible for drawing the entire Region Dataset track. 
 In order to optimize the rendering process, the `drawOverlay` method will only be called if the [overlay](src/main/java/org/motiflab/plugin/MyPlugin.java#L19) setting is set to TRUE.
 
+The example below will draw an image (defined elsewhere) covering the full area if the region and then draw a filled oval on top of that again. The oval is half the size of the region and drawn in the region's default color. 
 ```java
     @Override
     public void drawOverlay(Region region, Graphics2D g, Rectangle rect, VisualizationSettings settings, DataTrackVisualizer visualizer) {
-        g.drawImage(image, rect.x, rect.y, rect.width, rect.height);
-        
+        g.drawImage(someimage, rect.x, rect.y, rect.width, rect.height, null);
+        g.setColor(settings.getFeatureColor(region.getType()));
+        g.fillOval(rect.x+(int)(rect.width/4), rect.y+(int)(rect.height/4), (int)(rect.width/2), (int)(rect.height/2));
     } 
 ```
 

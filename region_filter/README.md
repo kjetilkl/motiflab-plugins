@@ -64,15 +64,18 @@ The template automatically creates a dialog that will be displayed when the tool
 ```
 > NOTE: Whenever the conditions underlying the filter have changed, making it necessary to reapply the filter in order to properly update the visualization, you should call the `filterUpdated()` method.
 
-The second method in the dialog section of the template is [targetChanged](src/main/java/org/motiflab/plugin/MyPlugin.java#L32-L36). This method will called every time the target dataset is changed (if the tool is used in "singleTarget" mode). This will happen when the user selects a new dataset to target with the drop-down menu, or it can be forced to happen when the current target dataset is deleted (in which case a new target will be selected automatically). The method already includes a call to `filterUpdated()` in order to reapply the filter, but the plugin creator can add additional code to respond such events, if necessary.
+The second method in the dialog section of the template is [targetChanged](src/main/java/org/motiflab/plugin/MyPlugin.java#L32-L36). This method will called every time the target dataset is changed (if the tool is used in "singleTarget" mode). This will happen when the user selects a new dataset to target with the drop-down menu, or it can be forced to happen when the current target dataset is deleted (in which case a new target will be selected automatically). The method already includes a call to `filterUpdated()` in order to reapply the filter, but the plugin creator can add additional code to respond to such events, if necessary.
 
 ## The filter
-The template automatically creates a dialog containing a CLOSE button that will be displayed when the tool is selected from MotifLab's Tools menu. In addition, the dialog will include a drop-down menu 
+The [filter section](src/main/java/org/motiflab/plugin/MyPlugin.java#L39-L72) of the template contains 6 callback methods that are always called for every installed filter before a Region is drawn. The methods are provided with the Region as an input parameter and can inspect the properties of the region before making a choice on how the Region should be drawn. 
+
+- [shouldVisualizeRegion(Region region)](https://github.com/kjetilkl/motiflab-plugins/blob/f74cdd4ccad749e3d1059b95e464dcfebd04e239/region_filter/src/main/java/org/motiflab/plugin/MyPlugin.java#L42-L44) : The filter should return TRUE if it wants the region to be shown or FALSE if it wants to region to be hidden. Note that if any of the installed filters wants the region to be hidden, it will not be shown.
+
 
 ## Additional tips
 
 ### Data updates
-Lorem ipsum
+The [parent class of the template](src/main/java/org/motiflab/plugin/templates/RegionFilterTool_Template.java) implements a DataListener interface to monitor changes to the target dataset and reapply the filter when necessary. It also detects if new Region Datasets are added or existing datasets are deleted and updates the options availbale in the target dataset drop-down menu accordingly. If the plugin creator needs to, they can [override these callback methods](src/main/java/org/motiflab/plugin/templates/RegionFilterTool_Template.java#L320-L351) to respond to such events. Just remember to include a call to `super()` at the beginning of each overrided method.
 
 ### Loading images
 Lorem ipsum

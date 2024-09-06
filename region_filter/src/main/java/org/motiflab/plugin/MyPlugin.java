@@ -15,7 +15,7 @@ public class MyPlugin extends org.motiflab.plugin.templates.RegionFilterTool_Tem
     private final String pluginName    = "My plugin"; // IMPORTANT: this name must be identical to the name used in the "plugin.conf" file !!!
     
     private final boolean singleTarget = true;  // apply filter to a single chosen region track (true) or to all region tracks (false)
-    private final boolean persistant   = false; // keep the filter after closing the dialog (true) or remove the filter when closing (false)
+    private final boolean persistent   = false; // keep the filter after closing the dialog (true) or remove the filter when closing (false)
     private final boolean overlay      = false;  // set to TRUE if you want to draw stuff on top of the regions with the drawOverlay method below  
     
     private final int filterPriority   = FILTER_PRIORITY_HIGH;
@@ -83,8 +83,8 @@ public class MyPlugin extends org.motiflab.plugin.templates.RegionFilterTool_Tem
     } 
     
     @Override
-    public boolean isPersistant() {
-        return persistant;
+    public boolean isPersistent() {
+        return persistent;
     }       
     
     @Override

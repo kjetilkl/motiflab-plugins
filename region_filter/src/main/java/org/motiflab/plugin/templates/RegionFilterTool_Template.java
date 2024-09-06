@@ -147,7 +147,7 @@ public abstract class RegionFilterTool_Template implements Plugin, RegionVisuali
     }
     
     public abstract boolean hasSingleTarget();
-    public abstract boolean isPersistant();
+    public abstract boolean isPersistent();
     public abstract int getFilterPriority();
     public abstract void targetChanged(RegionDataset target);    
     public abstract void setupDialog(JPanel panel);
@@ -238,7 +238,7 @@ public abstract class RegionFilterTool_Template implements Plugin, RegionVisuali
 
         private void closeButtonPressed(java.awt.event.ActionEvent evt) {                                        
             setVisible(false);
-            if (!isPersistant() || (removeOnClose!=null && removeOnClose.isSelected())) {
+            if (!isPersistent() || (removeOnClose!=null && removeOnClose.isSelected())) {
                 gui.removeRegionVisualizationFilter(RegionFilterTool_Template.this);
                 gui.redraw();
                 this.dispose();
@@ -272,7 +272,7 @@ public abstract class RegionFilterTool_Template implements Plugin, RegionVisuali
                 }
             });
             
-            if (isPersistant()) {
+            if (isPersistent()) {
                 bottomPanel.setLayout(new BorderLayout());
                 removeOnClose = new JCheckBox("Remove on close   ", false);
                 bottomPanel.add(removeOnClose, BorderLayout.WEST); 

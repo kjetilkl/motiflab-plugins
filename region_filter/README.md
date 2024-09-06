@@ -43,17 +43,17 @@ You can edit the [docs/index.html](docs/index.html) file to provide HTML-formatt
 The main code for the plugin should go in the [MyPlugin.java](src/main/java/org/motiflab/plugin/MyPlugin.java) file (or whatever you have renamed that file to), but you can split the code across multiple class files if you need to. 
 Remember to set the "[pluginName](src/main/java/org/motiflab/plugin/MyPlugin.java#L15C43-C51)" to the exact same name that you specified in the [plugin.conf](plugin.conf#L4) file.
 
-The template contains two main parts: a section pertaining to the [dialog](#L23-L38) that will be displayed when the tool is selected and the specification of the [filter](#L39-L72) itself.
-In addition, the header contains a few Boolean [settings](#L17-L19) that control some main behavioural aspects of the tool:
+The template contains two main parts: a section pertaining to the [dialog](src/main/java/org/motiflab/plugin/MyPlugin.java#L23-L38) that will be displayed when the tool is selected and the specification of the [filter](src/main/java/org/motiflab/plugin/MyPlugin.java#L39-L72) itself.
+In addition, the header contains a few Boolean [settings](src/main/java/org/motiflab/plugin/MyPlugin.java#L17-L19) that control some main behavioural aspects of the tool:
 
-- [singleTarget](#L17) : This setting controls whether the filter will be applied to a single Region Dataset (if set to TRUE) or all the Region Datasets (FALSE). If TRUE, the dialog will include a drop-down menu which allows the user to select exactly which dataset to apply the filter to.
-- [persistant](#L18) : This setting controls whether the filter should always be discarded when the dialog is closed (if set to FALSE) or whether it should potentially persist even after the user closes the dialog (if set to TRUE). If set to TRUE, the dialog will include a checkbox that allows the user to select whether or not to discard the filter.
-- [overlay](#L19) : This must be set to TRUE if you want to draw additional stuff on top of the regions with the filter. It is set to FALSE by default for optimization reasons.
+- [singleTarget](src/main/java/org/motiflab/plugin/MyPlugin.java#L17) : This setting controls whether the filter will be applied to a single Region Dataset (if set to TRUE) or all the Region Datasets (FALSE). If TRUE, the dialog will include a drop-down menu which allows the user to select exactly which dataset to apply the filter to.
+- [persistant](src/main/java/org/motiflab/plugin/MyPlugin.java#L18) : This setting controls whether the filter should always be discarded when the dialog is closed (if set to FALSE) or whether it should potentially persist even after the user closes the dialog (if set to TRUE). If set to TRUE, the dialog will include a checkbox that allows the user to select whether or not to discard the filter.
+- [overlay](src/main/java/org/motiflab/plugin/MyPlugin.java#L19) : This must be set to TRUE if you want to draw additional stuff on top of the regions with the filter. It is set to FALSE by default for optimization reasons.
 
-It is possible to have multiple filters installed at the same time. If any of these filter wants a region to be hidden, it will not be displayed. If all the filters agree that the region should be shown, they may suggest alternative colors for the region itself, its border, label or motif logo colors. The filters will be ordered according to *priority*, and the first filter to suggest an alternative color for the region will be obeyed. Hence, filters with [higher priority](#L21) are more likely to get their preferences respected.
+It is possible to have multiple filters installed at the same time. If any of these filter wants a region to be hidden, it will not be displayed. If all the filters agree that the region should be shown, they may suggest alternative colors for the region itself, its border, label or motif logo colors. The filters will be ordered according to *priority*, and the first filter to suggest an alternative color for the region will be obeyed. Hence, filters with [higher priority](src/main/java/org/motiflab/plugin/MyPlugin.java#L21) are more likely to get their will.
 
 ## The tool dialog
-The template automatically creates a dialog that will be displayed when the tool is selected from MotifLab's Tools menu. This dialog contains a CLOSE button at the bottom, and, if the [singleTarget](#L17) setting is set to TRUE, it will also include a drop-down menu at the top to select the target dataset. The plugin creator can add more GUI elements to the middle part of the dialog by adding components to the JPanel provided as an argument to the [setupDialog](#L27-L29) method. The JPanel has a vertical BoxLayout by default, so the components that are added will be displayed beneath each other (but this can be changed, of course).
+The template automatically creates a dialog that will be displayed when the tool is selected from MotifLab's Tools menu. This dialog contains a CLOSE button at the bottom, and, if the [singleTarget](src/main/java/org/motiflab/plugin/MyPlugin.java#L17) setting is set to TRUE, it will also include a drop-down menu at the top to select the target dataset. The plugin creator can add more GUI elements to the middle part of the dialog by adding components to the JPanel provided as an argument to the [setupDialog](src/main/java/org/motiflab/plugin/MyPlugin.java#L27-L29) method. The JPanel has a vertical BoxLayout by default, so the components will be displayed beneath each other (but this can be changed, of course).
 
 ```java
     @Override
@@ -62,13 +62,14 @@ The template automatically creates a dialog that will be displayed when the tool
         panel.add(new JSlider(0,100));
     }
 ```
+> NOTE: Whenever the conditions underlying the filter have changed, making it necessary to reapply the filter in order to properly update the visualization, you should call the `filterUpdated()` method.
 
-
+The second method in the dialog section of the template is [targetChanged](src/main/java/org/motiflab/plugin/MyPlugin.java#L32-L36). This method will called every time the target dataset is changed (if the tool is used in "singleTarget" mode). This will happen when the user selects a new dataset to target with the drop-down menu, or it can be forced to happen when the current target dataset is deleted (in which case a new target will be selected automatically). The method already includes a call to `filterUpdated()` in order to reapply the filter, but the plugin creator can add additional code to respond such events, if necessary.
 
 ## The filter
 The template automatically creates a dialog containing a CLOSE button that will be displayed when the tool is selected from MotifLab's Tools menu. In addition, the dialog will include a drop-down menu 
 
-## Additional 
+## Additional tips
 
 ### Data updates
 Lorem ipsum

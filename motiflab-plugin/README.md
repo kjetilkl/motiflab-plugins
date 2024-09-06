@@ -28,7 +28,7 @@ All the meta-data properties will be displayed if you select a plugin in the Con
 Rename the file [MyPlugin.java](src/main/java/org/motiflab/plugin/MyPlugin.java) in the [src/main/java/org/motiflab/plugin/](src/main/java/org/motiflab/plugin/) directory to something suiteable for your tool. Then edit this file and change the [class name in line 13](src/main/java/org/motiflab/plugin/MyPlugin.java#L13) to the same name.
 This name will not be displayed anywhere and it does not really matter what the name is, but it should be unique to your plugin.
 
-Next, change the [pluginName](src/main/java/org/motiflab/plugin/MyPlugin.java#L13) String in line 15 to the *exact same name* that you specified in the [plugin.conf](plugin.conf#L4) file. It is very important that these two names are identical, or else MotifLab may behave strangely.
+Next, change the [pluginName](src/main/java/org/motiflab/plugin/MyPlugin.java#L15) String in line 15 to the *exact same name* that you specified in the [plugin.conf](plugin.conf#L4) file. It is very important that these two names are identical, or else MotifLab may behave strangely.
 
 For instructions on how to code the rest of the plugin, see below.
 

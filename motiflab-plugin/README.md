@@ -1,4 +1,4 @@
-# RegionVisualizationFilter Tool template
+# Template: RegionVisualizationFilter Tool
 
 *RegionVisualizationFilters* can be added to MotifLab to dynamically decide whether a particular region in a Region Dataset should be hidden from view, or to change the colors of regions that are shown. They can also draw additional graphics on top of the regions to convey more information. This makes it possible to draw focus away from less interesting regions and instead highlight regions with particular properties.   
 
@@ -9,7 +9,7 @@ The dialog can be customized to add user interface elements that can be manipula
 To create a new plugin based on this template, follow these steps:
 
 ## pom.xml
-The `pom.xml` file is used by the [Maven](https://maven.apache.org/) build tool to describe how the plugin should be compiled and packaged.
+The [pom.xml](pom.xml) file is used by the [Maven](https://maven.apache.org/) build tool to describe how the plugin should be compiled and packaged.
 Open the `pom.xml` file in a text editor and change the "artifactId" name to something more sensible. You can change the "groupID" as well, if you want to.
 
 The POM-file also describes which external JAVA package dependencies the plugin requires. The MotifLab package is already listed here to allow your plugin to reference MotifLab code.

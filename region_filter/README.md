@@ -95,9 +95,33 @@ The example below will draw an image (defined elsewhere) covering the full area 
 The [parent class of the template](src/main/java/org/motiflab/plugin/templates/RegionFilterTool_Template.java) implements a DataListener interface to monitor changes to the target dataset and reapply the filter when necessary. It also detects if new Region Datasets are added or existing datasets are deleted and updates the options availbale in the target dataset drop-down menu accordingly. If the plugin creator needs to, they can [override these callback methods](src/main/java/org/motiflab/plugin/templates/RegionFilterTool_Template.java#L320-L351) to respond to such events. Just remember to include a call to `super()` at the beginning of each overrided method.
 
 ### Loading images
-Images placed in the [images/](images) directory can easily be loaded with a call to the `getImage(<filename>)` method which returns a java.awt.Image. 
+Image files placed in the [images/](images) directory can easily be loaded with a call to the `getImage(<filename>)` method which returns a java.awt.Image. 
 Note, however, that this method can only be used after the plugin has been initialized by MotifLab, which in effect means that it must be called from within one of the template's methods, such as [setupDialog](src/main/java/org/motiflab/plugin/MyPlugin.java#L27-L29).
 
+## Example
+
+The example below implements a simple filter tool that hides regions whose *score* property is lower than a threshold selected by the user with the help of a slider.
+The range of the slider is from 0 to 100, so it is assumed that the score values of the regions have been normalized to this same range.
+Only the two methods that need to be changed are shown.
+```java
+// =======================================   DIALOG   ===============================================
+
+    JSlider slider;
+
+    @Override
+    public void setupDialog(JPanel panel) {
+        slider = new JSlider(0,100,0); // create a slider widget with minimum value = 0 and maximum value = 100
+        slider.addChangeListener(changeEvent -> filterUpdated()); // reapply the filter whenever the user moves the slider 
+        panel.add(slider);  // add the slider to the tool dialog
+    }
+// =======================================   Filter   ===============================================
+
+    @Override
+    public boolean shouldVisualizeRegion(Region region) {
+        return region.getScore() > slider.getValue(); 
+    }
+
+```
 
 # Building the plugin
 To compile and package the plugin, you need the [Maven](https://maven.apache.org/) build tool. When you have finished all the steps described above, run the following command.

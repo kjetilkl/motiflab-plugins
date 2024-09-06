@@ -28,7 +28,7 @@ All the meta-data properties will be displayed if you select a plugin in the Con
 Rename the file [MyPlugin.java](src/main/java/org/motiflab/plugin/MyPlugin.java) in the [src/main/java/org/motiflab/plugin/](src/main/java/org/motiflab/plugin/) directory to something suiteable for your tool. Then edit this file and change the [class name in line 13](src/main/java/org/motiflab/plugin/MyPlugin.java#L13) to the same name.
 This name will not be displayed anywhere and it does not really matter what the name is, but it should be unique to your plugin.
 
-Next, change the [pluginName](src/main/java/org/motiflab/plugin/MyPlugin.java#L15) String in line 15 to the *exact same name* that you specified in the [plugin.conf](plugin.conf#L4) file. It is very important that these two names are identical, or else MotifLab may behave strangely.
+Next, change the value of the [pluginName](src/main/java/org/motiflab/plugin/MyPlugin.java#L15C43-C51) String in line 15 to the *exact same name* that you specified in the [plugin.conf](plugin.conf#L4) file. It is very important that these two names are identical, or else MotifLab may behave strangely.
 
 For instructions on how to code the rest of the plugin, see below.
 
@@ -41,7 +41,7 @@ You can edit the [docs/index.html](docs/index.html) file to provide HTML-formatt
 
 # Coding the plugin
 The main code for the plugin should go in the [MyPlugin.java](src/main/java/org/motiflab/plugin/MyPlugin.java)  file (or whatever you have renamed that file to), but you can split the code across multiple class files if you need to. 
-Remember to set the "[pluginName](src/main/java/org/motiflab/plugin/MyPlugin.java#L15)" to the exact same name that you specified in the [plugin.conf](plugin.conf#L4) file.
+Remember to set the "[pluginName](src/main/java/org/motiflab/plugin/MyPlugin.java#L15C43-C51)" to the exact same name that you specified in the [plugin.conf](plugin.conf#L4) file.
 
 # Building the plugin
 To compile and package the plugin, you need the [Maven](https://maven.apache.org/) build tool. When you have finished all the steps described above, run the following command.

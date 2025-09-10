@@ -5,10 +5,10 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import javax.swing.*;
 import javax.swing.event.*;
-import motiflab.engine.data.Region;
-import motiflab.engine.data.RegionDataset;
-import motiflab.gui.DataTrackVisualizer;
-import motiflab.gui.VisualizationSettings;
+import org.motiflab.engine.data.Region;
+import org.motiflab.engine.data.RegionDataset;
+import org.motiflab.gui.DataTrackVisualizer;
+import org.motiflab.gui.VisualizationSettings;
 
 public class MyPlugin extends org.motiflab.plugin.templates.RegionFilterTool_Template {
     

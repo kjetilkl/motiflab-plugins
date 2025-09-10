@@ -26,19 +26,19 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import motiflab.engine.DataListener;
-import motiflab.engine.ExecutionError;
-import motiflab.engine.MotifLabClient;
-import motiflab.engine.MotifLabEngine;
-import motiflab.engine.Plugin;
-import motiflab.engine.SystemError;
-import motiflab.engine.data.Data;
-import motiflab.engine.data.Region;
-import motiflab.engine.data.RegionDataset;
-import motiflab.gui.DataTrackVisualizer;
-import motiflab.gui.MotifLabGUI;
-import motiflab.gui.RegionVisualizationFilter;
-import motiflab.gui.VisualizationSettings;
+import org.motiflab.engine.DataListener;
+import org.motiflab.engine.ExecutionError;
+import org.motiflab.engine.MotifLabClient;
+import org.motiflab.engine.MotifLabEngine;
+import org.motiflab.engine.Plugin;
+import org.motiflab.engine.SystemError;
+import org.motiflab.engine.data.Data;
+import org.motiflab.engine.data.Region;
+import org.motiflab.engine.data.RegionDataset;
+import org.motiflab.gui.DataTrackVisualizer;
+import org.motiflab.gui.MotifLabGUI;
+import org.motiflab.gui.RegionVisualizationFilter;
+import org.motiflab.gui.VisualizationSettings;
 
 /**
  *
